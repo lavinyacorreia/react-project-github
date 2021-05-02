@@ -43,22 +43,33 @@ const [userData, setUserData] = useState();
        </div>
      </form>
      <div className="py-5">
-        <img src={GithubImage} 
-        className="responsive rounded-circle"
-        alt=""
-        height="200px" 
-        />
-        <h1 className="pt-5">
-          <a href="https://github.com/lavinyacorreia" target="_new">
-            lavinyacorreia
-          </a>
-        </h1>
-        <h3>Santo André</h3>
-        <p>
-          <a href="https://devsuperior.com.br/evento-sds3-org" target="_new" className="text-info">
-            https://devsuperior.com.br/evento-sds3-org
-          </a>
-        </p>
+        {!userData && (
+            <img src={GithubImage} 
+            className="responsive rounded-circle"
+            alt=""
+            height="200px" 
+            />
+        )}
+        {userData && (
+            <div>
+            <img src={userData.avatar_url} 
+                className="responsive rounded-circle"
+                alt=""
+                height="200px" 
+                />
+            <h1 className="pt-5">
+              <a href={userData.html_url} target="_new">
+                {userData.name}
+              </a>
+            </h1>
+            <h3>{userData.location}</h3>
+            <p>
+              <a href={userData.blog} target="_new" className="text-info">
+              {userData.blog} 
+              </a>
+            </p>
+            </div>
+        )} 
      </div>
    </div>
   );
